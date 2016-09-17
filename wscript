@@ -14,19 +14,19 @@ xpyb_version_required  = '1.3'
 
 def options(ctx):
   print('  %s/options()' %d)
-  ctx.tool_options('gnu_dirs')
-  ctx.tool_options('compiler_cc')
-  ctx.tool_options('python') # options for disabling pyc or pyo compilation
+  ctx.load('gnu_dirs')
+  ctx.load('compiler_c')
+  ctx.load('python') # options for disabling pyc or pyo compilation
 
 
 def configure(ctx):
   print('  %s/configure()' %d)
 
   env = ctx.env
-  ctx.check_tool('gnu_dirs')
-  ctx.check_tool('compiler_cc')
-  ctx.check_tool('python')
-  ctx.check_python_version((2,6,0))
+  ctx.load('gnu_dirs')
+  ctx.load('compiler_c')
+  ctx.load('python')
+  ctx.check_python_version((2,7,10))
   ctx.check_python_headers()
 
   ctx.check_cfg(package='cairo',
